@@ -6,10 +6,14 @@ var winningScore = 5;
 
 var p1Button = document.querySelector("#p1");
 var p2Button = document.getElementById("p2");
-var reset = document.querySelector("#reset");
+var resetButton = document.querySelector("#reset");
 // var h1 = document.querySelector("h1");
 var p1Display = document.querySelector("#p1Display");
 var p2Display = document.querySelector("#p2Display");
+var numInput = document.querySelector("input[type='number']");
+var p = document.querySelector("p");
+// Select span inside of a paragraph
+var winningScoreDisplay = document.querySelector("p span")
 
 
 p1Button.addEventListener("click", function(){
@@ -40,6 +44,29 @@ p2Button.addEventListener("click", function(){
 	p2Display.textContent = p2Score;
 }
 });
+
+resetButton.addEventListener("click", function(){
+	reset();
+});
+
+numInput.addEventListener("change", function(){
+	// alert("Changed ");
+	// p.textContent = "Value Changed!";
+	winningScoreDisplay.textContent = this.value;
+	winningScore = Number(this.value);
+	reset();
+});
+
+function reset() {
+	p1Score = 0;
+	p2Score = 0;
+	p1Display.textContent = 0;
+	p2Display.textContent = 0;
+	p1Display.classList.remove("winner");
+	p2Display.classList.remove("winner");
+	gameOver = false;
+	console.log(gameOver);
+}
 
 
 
